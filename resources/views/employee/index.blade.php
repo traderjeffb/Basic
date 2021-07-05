@@ -30,7 +30,7 @@
         <td>
           <a href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
           <a href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
-          <a href= "{{ route('create') }}"> Delete</a>
+          <a href= "{{ route('delete', ['id'=>$employee['id']]) }}"> Delete</a>
         </td>
       </tr>
       @endforeach
