@@ -23,4 +23,7 @@ Route::get('details/{id}',[employeeController::class, 'details'])->name('details
 Route::post('store',[employeeController::class, 'store'])->name('store');
 Route::get('edit/{id}',[employeeController::class, 'edit'])->name('edit');
 Route::post('update/{id}', [employeeController::class, 'update'])->name('update');
+Route::get('delete/{id}',[employeeController::class, 'delete'])->name('delete');
+Route::get('destroy/{id}',[employeeController::class, 'destroy'])->name('destroy');
+
 
