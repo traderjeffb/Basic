@@ -15,6 +15,7 @@ class employeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
+       // dd($employees);
         return view('employee.index', compact('employees'));
     }
 
@@ -25,7 +26,7 @@ class employeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -36,7 +37,14 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee= new employee();
+        $employee->name = $request->get('name');
+        $employee->address = $request->get('address');
+        $employee->city = $request->get('city');
+        $employee->state = $request->get('state');
+        $employee->zipcode = $request->get('zipcode');
+        $employee->save();
+        return redirect('index')->with('success', 'new employee entered');
     }
 
     /**
@@ -45,9 +53,11 @@ class employeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function details($id)
     {
-        //
+            $employee = employee::where('id',"=","$id")->first();
+        //dd($employee);
+            return view('employee.details',compact('employee'));
     }
 
     /**
@@ -58,7 +68,8 @@ class employeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::where('id','=',$id)->first();
+        return view('employee.edit', compact('employee'));
     }
 
     /**
@@ -70,7 +81,15 @@ class employeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee= employee::where('id',"=", $id)->first();
+
+        $employee->name = $request['name'];
+        $employee->address = $request['address'];
+        $employee->city = $request['city'];
+        $employee->state = $request['state'];
+        $employee->zipcode = $request['zipcode'];
+        $employee->save();
+        return redirect('index')->withSuccess('employee info updated!');
     }
 
     /**
