@@ -17,6 +17,10 @@ use App\Http\Controllers\employeeController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('employee/index', function () {
-    return view('employee.index')->name('employee.index');
-});
+Route::get('index', [employeeController::class, 'index'])->name('index');
+Route::get('create',[employeeController::class, 'create'])->name('create');
+Route::get('details/{id}',[employeeController::class, 'details'])->name('details');
+Route::post('store',[employeeController::class, 'store'])->name('store');
+Route::get('edit/{id}',[employeeController::class, 'edit'])->name('edit');
+Route::post('update/{id}', [employeeController::class, 'update'])->name('update');
+
