@@ -91,7 +91,11 @@ class employeeController extends Controller
         $employee->save();
         return redirect('index')->withSuccess('employee info updated!');
     }
-
+    public function delete($id)
+    {
+        $employee = Employee::where('id','=',$id)->first();
+        return view('employee.delete', compact('employee'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -100,6 +104,9 @@ class employeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        employee::where('id',"=", $id)->delete();
+
+        return redirect('index')->with('success','Employee Successfully Deleted');
+
     }
 }
