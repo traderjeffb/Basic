@@ -1,31 +1,41 @@
-<h1>hello</h1>
-@extends('app');
+@extends('layouts.app')
 
 @section('content')
-    
-<table class="table">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>address</th>
-      <th>city</th>
-      <th>state</th>
-      <th>zipcode</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      @foreach($employees as $employee)
-      <td>{{ $employees['id'] }}</td>
-      <td>{{ $employees['name'] }}</td>
-      <td>{{ $employees['address'] }}</td>
-      <td>{{ $employees['city'] }}</td>
-      <td>{{ $employees['state'] }}</td>
-      <td>{{ $employees['zipcode'] }}</td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-@endsection('content')
+<div class="tableDiv"></div>   
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>city</th>
+        <th>state</th>
+        <th>zipcode</th>
+      </tr>
+    </thead>
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{Session::get('success')}}
+    </div>
+  @endif
+    <tbody>
+      <tr>
+        @foreach($employees as $employee)
+        <td>{{ $employee['id'] }}</td>
+        <td>{{ $employee['name'] }}</td>
+        <td>{{ $employee['address'] }}</td>
+        <td>{{ $employee['city'] }}</td>
+        <td>{{ $employee['state'] }}</td>
+        <td>{{ $employee['zipcode'] }}</td>
+        <td>
+          <a href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
+          <a href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
+          <a href= "{{ route('create') }}"> Delete</a>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>   
+@endsection
 
