@@ -7,9 +7,13 @@
 </div>
 <div>
   @if(Session::has('success'))
-  <div class="alert alert-success">
+  <div class="alert alert-success text-center">
       {{Session::get('success')}}
   </div>
+  @elseif(Session::has('danger'))
+  <div class="alert alert-danger text-center">
+    {{Session::get('danger')}}
+  </div> 
 @endif
 </div>
 <div class="container d-flex ">  
