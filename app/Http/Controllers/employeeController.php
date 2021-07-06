@@ -106,7 +106,7 @@ class employeeController extends Controller
     {
         employee::where('id',"=", $id)->delete();
 
-        return redirect('index')->with('success','Successfully Deleted');
+        return redirect('index')->with('danger','Successfully Deleted');
 
     }
 }
