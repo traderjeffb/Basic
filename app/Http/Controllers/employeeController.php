@@ -44,7 +44,7 @@ class employeeController extends Controller
         $employee->state = $request->get('state');
         $employee->zipcode = $request->get('zipcode');
         $employee->save();
-        return redirect('index')->with('success', 'new employee entered');
+        return redirect('index')->with('success', 'Successfully Edited');
     }
 
     /**
@@ -89,7 +89,7 @@ class employeeController extends Controller
         $employee->state = $request['state'];
         $employee->zipcode = $request['zipcode'];
         $employee->save();
-        return redirect('index')->withSuccess('employee info updated!');
+        return redirect('index')->withSuccess('Successfully Updated');
     }
     public function delete($id)
     {
@@ -106,7 +106,7 @@ class employeeController extends Controller
     {
         employee::where('id',"=", $id)->delete();
 
-        return redirect('index')->with('success','Employee Successfully Deleted');
+        return redirect('index')->with('success','Successfully Deleted');
 
     }
 }
