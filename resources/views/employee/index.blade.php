@@ -1,41 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<div class=""></div>   
-  <table class="table">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>address</th>
-        <th>city</th>
-        <th>state</th>
-        <th>zipcode</th>
+
+<div class="d-flex">
+  <h3 class="mx-auto mt-4">Index of All Employee Infomation</h3>
+</div>
+<div>
+  @if(Session::has('success'))
+  <div class="alert alert-success">
+      {{Session::get('success')}}
+  </div>
+@endif
+</div>
+<div class="container d-flex ">  
+  <table class="table table-bordered table-striped rounded">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        {{-- <th>id</th> --}}
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zipcode</th>
+        <th>Action</th>
       </tr>
     </thead>
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{Session::get('success')}}
-    </div>
-  @endif
     <tbody>
       <tr>
         @foreach($employees as $employee)
-        <td>{{ $employee['id'] }}</td>
-        <td>{{ $employee['name'] }}</td>
-        <td>{{ $employee['address'] }}</td>
-        <td>{{ $employee['city'] }}</td>
-        <td>{{ $employee['state'] }}</td>
-        <td>{{ $employee['zipcode'] }}</td>
-        <td>
-          <a href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
-          <a href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
-          <a href= "{{ route('delete', ['id'=>$employee['id']]) }}"> Delete</a>
+        <td class="text-center">{{ $employee['name'] }}</td>
+        <td class="text-center" >{{ $employee['address'] }}</td>
+        <td class="text-center" >{{ $employee['city'] }}</td>
+        <td class="text-center" >{{ $employee['state'] }}</td>
+        <td class="text-center" >{{ $employee['zipcode'] }}</td>
+        <td class="text-center" >
+          <a class="m-sm-2" href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
+          <a class="m-sm-2" href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
+          <a class="m-sm-2" id="deleteBtn" href= "{{ route('destroy', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
+            > Delete</a>
         </td>
       </tr>
       @endforeach
     </tbody>
   </table>
+</div> 
 </div>   
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $('#deleteBtn').click(
+      function(){
+      alert("Are You Sure You Want to Delelte?");
+  });
+});
+
+</script>
 
