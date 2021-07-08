@@ -26,6 +26,7 @@
         <th>City</th>
         <th>State</th>
         <th>Zipcode</th>
+        <th>Employment Status</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -37,6 +38,7 @@
         <td class="text-center" >{{ $employee['city'] }}</td>
         <td class="text-center" >{{ $employee['state'] }}</td>
         <td class="text-center" >{{ $employee['zipcode'] }}</td>
+        <td class="text-center" >{{ $employee['employment_status'] }}</td>
         <td class="text-center" >
           <a class="m-sm-2" href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
           <a class="m-sm-2" href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
