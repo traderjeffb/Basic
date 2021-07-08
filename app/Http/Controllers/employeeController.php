@@ -44,7 +44,7 @@ class employeeController extends Controller
         $employee->state = $request->get('state');
         $employee->zipcode = $request->get('zipcode');
         $employee->save();
-        return redirect('index')->with('success', 'Successfully Edited');
+        return redirect('index')->with('success', 'Successfully Created');
     }
 
     /**
