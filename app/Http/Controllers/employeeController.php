@@ -37,12 +37,25 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->gender);
+        $request->validate([
+            'name'=>'required ',
+            'address'=> 'required',
+            'city'=> 'required',
+            'state'=> 'required',
+            'zipcode'=> 'required',
+            'employment_status' => 'required',
+            'gender' => 'required',
+        ]);
+
         $employee= new employee();
         $employee->name = $request->get('name');
         $employee->address = $request->get('address');
         $employee->city = $request->get('city');
         $employee->state = $request->get('state');
         $employee->zipcode = $request->get('zipcode');
+        $employee->employment_status = $request->Input::get('employment_status');
+
         $employee->save();
         return redirect('index')->with('success', 'Successfully Created');
     }
@@ -82,6 +95,14 @@ class employeeController extends Controller
     public function update(Request $request, $id)
     {
         $employee= employee::where('id',"=", $id)->first();
+
+        $request->validate([
+            'name'=>'required ',
+            'address'=> 'required',
+            'city'=> 'required',
+            'state'=> 'required',
+            'zipcode'=> 'required',
+        ]);
 
         $employee->name = $request['name'];
         $employee->address = $request['address'];
