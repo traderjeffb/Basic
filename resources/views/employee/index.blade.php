@@ -16,7 +16,7 @@
   </div> 
 @endif
 </div>
-<div class="container d-flex ">  
+<div class="container d-flex table-responsive">  
   <table class="table table-bordered table-striped rounded">
     <thead class="thead-dark">
       <tr class="text-center">
