@@ -18,21 +18,23 @@
             <input  class="input-group" name="state" value={{ $employee['state'] }} required><br>
             <label for="zipcode" class="ml-md-2">Zipcode</label>
             <input  class="input-group" name="zipcode" value={{ $employee['zipcode'] }} required>
-
-            <input type="radio" id="fullTime" name="employment_status" value={{ $employee['employment_status'] }}>
+            <input type="radio" id="fullTime" name="employment_status" value="fullTime" {{ ($employee['employment_status']=="fullTime")? "checked" : "" }}>
             <label for="fullTime">Full Time</label><br>
-            <input type="radio" id="partTime" name="employment_status" value={{ $employee['employment_status'] }}>
+            
+            <input type="radio" id="partTime" name="employment_status" value="partTime" {{ ($employee['employment_status']=="partTime")? "checked" : "" }}
+            >
             <label for="partTime">Part Time</label><br>
-            <input type="radio" id="tempHelp" name="employment_status" value={{ $employee['employment_status'] }}>
+
+            <input type="radio" id="tempHelp" name="employment_status" value="tempHelp" {{ ($employee['employment_status']=="tempHelp")? "checked" : "" }}>
             <label for="tempHelp">Temporary Help</label><br>
 
             <div>
               <label for="gender">Gender:</label>
               <select id="gender" name="gender">
                 <option value="">--Please Make a Selection--</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="LBGTQ">LBGTQ</option>
+                <option value="male" {{ ($employee['gender']=="male")? "selected" : "" }}>Male</option>
+                <option value="female" {{ ($employee['gender']=="female")? "selected" : "" }}>Female</option>
+                <option value="other" {{ ($employee['gender']=="other")? "selected" : "" }}>Other</option>
               </select>
             </div>
             <button class= "m-2 rounded" type="submit">Submit</button>
