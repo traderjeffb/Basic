@@ -16,17 +16,17 @@
   </div> 
 @endif
 </div>
-<div class="container d-flex table-responsive">  
-  <table class="table table-bordered table-striped rounded">
+<div class="container">  
+  <table class="table table-bordered table-striped rounded table-responsive">
     <thead class="thead-dark">
       <tr class="text-center">
-        {{-- <th>id</th> --}}
         <th>Name</th>
         <th>Address</th>
         <th>City</th>
         <th>State</th>
         <th>Zipcode</th>
-        <th>Employment Status</th>
+        <th>Status</th>
+        <th>Gender</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -39,10 +39,11 @@
         <td class="text-center" >{{ $employee['state'] }}</td>
         <td class="text-center" >{{ $employee['zipcode'] }}</td>
         <td class="text-center" >{{ $employee['employment_status'] }}</td>
+        <td class="text-center" >{{ $employee['gender'] }}</td>
         <td class="text-center" >
-          <a class="m-sm-2" href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
-          <a class="m-sm-2" href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
-          <a class="m-sm-2" id="deleteBtn" href= "{{ route('destroy', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
+          <a class="" href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
+          <a class="" href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
+          <a class="" id="deleteBtn" href= "{{ route('destroy', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
             > Delete</a>
         </td>
       </tr>
