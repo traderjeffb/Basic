@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class employeeController extends Controller
 {
@@ -37,7 +39,7 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->gender);
+        // dd($request->gender);
         $request->validate([
             'name'=>'required ',
             'address'=> 'required',
@@ -49,12 +51,13 @@ class employeeController extends Controller
         ]);
 
         $employee= new employee();
-        $employee->name = $request->get('name');
+        $employee->name = ucfirst($request->get('name'));
         $employee->address = $request->get('address');
         $employee->city = $request->get('city');
         $employee->state = $request->get('state');
         $employee->zipcode = $request->get('zipcode');
-        $employee->employment_status = $request->Input::get('employment_status');
+        $employee->employment_status = $request->get('employment_status');
+        $employee->gender = $request->get('gender');
 
         $employee->save();
         return redirect('index')->with('success', 'Successfully Created');
@@ -104,7 +107,7 @@ class employeeController extends Controller
             'zipcode'=> 'required',
         ]);
 
-        $employee->name = $request['name'];
+        $employee->name = ucfirst($request['name']);
         $employee->address = $request['address'];
         $employee->city = $request['city'];
         $employee->state = $request['state'];
