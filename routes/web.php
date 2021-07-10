@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\employeeController;
+use App\Http\Controllers\CustomerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,9 @@ Route::get('edit/{id}',[employeeController::class, 'edit'])->name('edit');
 Route::post('update/{id}', [employeeController::class, 'update'])->name('update');
 Route::get('delete/{id}',[employeeController::class, 'delete'])->name('delete');
 Route::get('destroy/{id}',[employeeController::class, 'destroy'])->name('destroy');
+
+
+//Customer
+Route::get('customer.index', [CustomerController::class, 'index'])->name('customer.index');
 
 
