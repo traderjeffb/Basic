@@ -21,6 +21,12 @@ class employeeController extends Controller
         return view('employee.index', compact('employees'));
     }
 
+    public function test()
+    {
+        return view('employee.test');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
