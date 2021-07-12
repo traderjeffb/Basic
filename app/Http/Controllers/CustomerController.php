@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use DataTables;
 
 class CustomerController extends Controller
 {
@@ -15,7 +17,21 @@ class CustomerController extends Controller
     {
         return view('customer.index');
     }
-
+    
+    public function getCustomers(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = customer::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -32,9 +48,33 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+            dd($request);
+            $request->validate([
+                'firstName'=>'required ',
+                'lastName'=>'required ',
+                'address'=> 'required',
+                'city'=> 'required',
+                'state'=> 'required',
+                'zipcode'=> 'required',
+                'email' => 'required',
+                'customerRating' => 'required',
+            ]);
+    
+            $customer= new customer();
+            $customer->firtName = ucfirst($request->get('firstName'));
+            $customer->lastName = ucfirst($request->get('lastName'));
+            $customer->address = $request->get('address');
+            $customer->city = $request->get('city');
+            $customer->state = $request->get('state');
+            $customer->zipcode = $request->get('zipcode');
+            $customer->email = $request->get('email');
+            $customer->customerRating = $request->get('customerRating');
+    
+            $customer->save();
+            return view('customer.index')->with('success', 'Successfully Created');
     }
 
     /**
