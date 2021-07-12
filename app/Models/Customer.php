@@ -26,4 +26,5 @@ class Customer extends Model
         'email',
         'customerRating',
     ];
+
 }
