@@ -1,10 +1,28 @@
 @extends('layouts.app')
 
+
+
 @section('content')
+
+{{-- <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- DATATABLE -->
+  <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
+  <title>Hello, world!</title>
+</head> --}}
+
 
 <div class="d-flex">
   <h3 class="mx-auto mt-4">Index of All Employee Infomation</h3>
 </div>
+<div class="d-flex justify-content-center">  <a  href= {{ route('create') }}><h5>Add a New Employee</h5></a></div>
+
 <div>
   @if(Session::has('success'))
   <div class="alert alert-success text-center">
@@ -17,7 +35,7 @@
 @endif
 </div>
 <div class="container">  
-  <table class="table table-bordered table-striped rounded table-responsive">
+  <table id="example" class="table table-bordered table-striped rounded table-responsive">
     <thead class="thead-dark">
       <tr class="text-center">
         <th>Name</th>
@@ -53,15 +71,24 @@
 </div> 
 </div>   
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>  
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> --}}
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- DATATABLE -->
+<script type="text/JavaScript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script type="text/JavaScript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
 
 <script>
-    $(document).ready(function(){
-      $('#deleteBtn').click(
-      function(){
-      alert("Are You Sure You Want to Delelte?");
-  });
-});
+
+$(document).ready(function() {
+        $("#example").dataTable();
+      });
 
 </script>
 
