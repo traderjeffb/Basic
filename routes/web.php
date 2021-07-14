@@ -31,5 +31,8 @@ Route::get('destroy/{id}',[employeeController::class, 'destroy'])->name('destroy
 
 //Customer
 Route::get('customer.index', [CustomerController::class, 'index'])->name('customer.index');
+Route::get('customer.list', [CustomerController::class, 'getCustomers'])->name('customer.list');
+Route::get('customer.create', [CustomerController::class, 'create'])->name('customer.create');
+Route::post('customer.store', [CustomerController::class, 'store'])->name('customer.store');
 
-
+Route::get('test',[employeeController::class, 'test'])->name('test');
