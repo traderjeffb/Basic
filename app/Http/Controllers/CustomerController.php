@@ -15,23 +15,25 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customer.index');
+        $customers = Customer::all();
+         //dd($customers);
+        return view('customer.index', compact('customers'));
     }
     
-    public function getCustomers(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = customer::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-    }
+    // public function getCustomers(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $data = customer::latest()->get();
+    //         return Datatables::of($data)
+    //             ->addIndexColumn()
+    //             ->addColumn('action', function($row){
+    //                 $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+    //                 return $actionBtn;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     }
+    // }
     /**
      * Show the form for creating a new resource.
      *
@@ -74,7 +76,7 @@ class CustomerController extends Controller
             $customer->customerRating = $request->get('customerRating');
     
             $customer->save();
-            return view('customer.index')->with('success', 'Successfully Created');
+            return('Successfully Created');
     }
 
     /**
@@ -83,11 +85,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function details($id)
     {
         //
-    }
 
+    }
     /**
      * Show the form for editing the specified resource.
      *
