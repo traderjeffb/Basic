@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{{--  <!DOCTYPE html>  --}}
+{{--  <html lang="en">  --}}
 <head>
   {{-- ////////// --}}
   <meta charset="UTF-8">
@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 
-  <link rel="stylesheet" href="public.styles.css">
+  {{--  <link rel="stylesheet" href="public.styles.css">  --}}
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{--  <script src="{{ asset('js/app.js') }}" defer></script>  --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -36,17 +36,17 @@
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand font-weight-bold"  href="#">Yorktown New & Used Tools</a>
+  <a class="navbar-brand font-weight-bolder"  href="#">Yorktown Tools</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href= {{ route('index') }}>Employees <span class="sr-only">(current)</span></a>
-      {{-- <a class="nav-item nav-link" href= {{ route('create') }}>Add Employee</a> --}}
-      <a class="nav-item nav-link active" href= {{ route('customer.index') }}>Customers <span class="sr-only">(current)</span></a>
-      {{-- <a class="nav-item nav-link" href= {{ route('edit') }}>Pricing</a> --}}
-      {{-- <a class="nav-item nav-link disabled" href="#">Disabled</a> --}}
+      <a class="nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Employees <span class="sr-only">(current)</span></a>
+      {{--  <a class="nav-item nav-link" href= {{ route('create') }}>Add Employee</a>  --}}
+      <a class="nav-item nav-link active font-weight-bold" href= {{ route('customer.index') }}>Customers <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active font-weight-bold" href= {{ route('product.index') }}>Products <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active font-weight-bold" href= "#">Sales<span class="sr-only">(current)</span></a>
     </div>
   </div>
 </nav>
