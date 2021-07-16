@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
 
 {{-- <head>
@@ -21,7 +19,7 @@
 <div class="d-flex">
   <h3 class="mx-auto mt-4">Index of All Employee Infomation</h3>
 </div>
-<div class="d-flex justify-content-center">  <a  href= {{ route('create') }}><h5>Add a New Employee</h5></a></div>
+<div class="d-flex justify-content-center">  <a  href= {{ route('employee.create') }}><h5>Add a New Employee</h5></a></div>
 
 <div>
   @if(Session::has('success'))
@@ -59,9 +57,9 @@
         <td class="text-center" >{{ $employee['employment_status'] }}</td>
         <td class="text-center" >{{ $employee['gender'] }}</td>
         <td class="text-center" >
-          <a class="" href= "{{ route('details', ['id'=>$employee['id']]) }}"> Details</a>
-          <a class="" href= "{{ route('edit', ['id'=>$employee['id']]) }}"> Edit</a>
-          <a class="" id="deleteBtn" href= "{{ route('destroy', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
+          <a class="" href= "{{ route('employee.details', ['id'=>$employee['id']]) }}"> Details</a>
+          <a class="" href= "{{ route('employee.edit', ['id'=>$employee['id']]) }}"> Edit</a>
+          <a class="" id="deleteBtn" href= "{{ route('employee.destroy', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
             > Delete</a>
         </td>
       </tr>
