@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('/product',[ProductController::class, 'product.index'] );
+Route::post('/product',[ProductController::class, 'store'] );
+Route::get('/product/{id}',[ProductController::class, 'show'] );
+Route::put('/product/{id}',[ProductController::class, 'update'] );
+Route::delete('/product/{id}',[ProductController::class, 'delete'] );
+Route::get('/product/search/{name}',[ProductController::class, 'search'] );
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

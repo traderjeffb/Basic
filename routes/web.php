@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -19,20 +20,24 @@ use App\Http\Controllers\CustomerController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index', [employeeController::class, 'index'])->name('index');
-Route::get('create',[employeeController::class, 'create'])->name('create');
-Route::get('details/{id}',[employeeController::class, 'details'])->name('details');
-Route::post('store',[employeeController::class, 'store'])->name('store');
-Route::get('edit/{id}',[employeeController::class, 'edit'])->name('edit');
-Route::post('update/{id}', [employeeController::class, 'update'])->name('update');
-Route::get('delete/{id}',[employeeController::class, 'delete'])->name('delete');
-Route::get('destroy/{id}',[employeeController::class, 'destroy'])->name('destroy');
-
+Route::get('employee.index', [employeeController::class, 'index'])->name('employee.index');
+Route::get('employee.create',[employeeController::class, 'create'])->name('employee.create');
+Route::get('employee.details/{id}',[employeeController::class, 'details'])->name('employee.details');
+Route::post('employee.store',[employeeController::class, 'store'])->name('employee.store');
+Route::get('employee.edit/{id}',[employeeController::class, 'edit'])->name('employee.edit');
+Route::post('employee.update/{id}',[employeeController::class, 'update'])->name('employee.update');
+Route::get('employee.delete/{id}',[employeeController::class, 'delete'])->name('employee.delete');
+Route::get('employee.destroy/{id}',[employeeController::class, 'destroy'])->name('employee.destroy');
 
 //Customer
 Route::get('customer.index', [CustomerController::class, 'index'])->name('customer.index');
 Route::get('customer.list', [CustomerController::class, 'getCustomers'])->name('customer.list');
+Route::get('customer.details{id}', [CustomerController::class, 'index'])->name('customer.details');
+Route::get('customer.edit{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::get('customer.create', [CustomerController::class, 'create'])->name('customer.create');
 Route::post('customer.store', [CustomerController::class, 'store'])->name('customer.store');
+Route::get('customer.destroy/{id}',[CustomerController::class, 'destroy'])->name('customer.destroy');
 
-Route::get('test',[employeeController::class, 'test'])->name('test');
+//Route::get('test',[employeeController::class, 'test'])->name('test');
+//Product
+Route::get('index',[ProductController::class, 'index'])->name('product.index');
