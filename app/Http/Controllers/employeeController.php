@@ -45,7 +45,7 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->gender);
+         //dd($request->gender);
         $request->validate([
             'name'=>'required ',
             'address'=> 'required',
@@ -64,6 +64,7 @@ class employeeController extends Controller
         $employee->zipcode = $request->get('zipcode');
         $employee->employment_status = $request->get('employment_status');
         $employee->gender = $request->get('gender');
+        $employee->department = $request->get('department');
 
         $employee->save();
         return redirect('employee.index')->with('success', 'Successfully Created');
@@ -103,6 +104,7 @@ class employeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //  dd($request->employment_status);
         $employee= employee::where('id',"=", $id)->first();
 
         $request->validate([
@@ -111,6 +113,8 @@ class employeeController extends Controller
             'city'=> 'required',
             'state'=> 'required',
             'zipcode'=> 'required',
+            'employment_status' => 'required',
+            'gender' => 'required',
         ]);
 
         $employee->name = ucfirst($request['name']);
@@ -118,9 +122,13 @@ class employeeController extends Controller
         $employee->city = $request['city'];
         $employee->state = $request['state'];
         $employee->zipcode = $request['zipcode'];
+        $employee->employment_status = $request['employment_status'];
+        $employee->gender = $request['gender'];
+
         $employee->save();
-        return redirect('employee.index')->withSuccess('Successfully Updated');
+        return redirect('employee.index')->with('success', 'Successfully Updated');
     }
+
     public function delete($id)
     {
         $employee = Employee::where('id','=',$id)->first();
