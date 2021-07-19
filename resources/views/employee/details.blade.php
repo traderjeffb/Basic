@@ -6,7 +6,8 @@
   <h3 class="mx-auto mt-4" >Details : {{ $employee['name'] }} </h3>
 </div>
   <div class=" container d-flex">
-    <form class="form-group form-control-md col-md-4 border p-1  mx-auto  bg-light font-weight-bold "  action="{{ url('update/'.$employee['id'])}}"  method="post" id="add-employee-form">
+    <form class="form-group form-control-md col-md-4 border p-1  mx-auto  
+      bg-light font-weight-bold" id="add-employee-form">
       @csrf
             <label for="name" class="ml-md-2" >Name</label>
             <input class="input-group" name="name" value="{{ $employee['name'] }}" readonly><br>
@@ -20,16 +21,26 @@
             <input  class="input-group" name="zipcode" value="{{ $employee['zipcode'] }}"readonly>
 
             <label for="employment_status">Employment Status:</label><br>
-              <input type="radio" id="fullTime" name="employment_status" readonly value="fullTime" {{ ($employee['employment_stataus']=="fullTime")? "checked" : "" }}>
+              <input type="radio" id="fullTime" name="employment_status" value="fullTime" {{ ($employee['employment_status']=="fullTime")? "checked" : "" }}>
               <label for="fullTime">Full Time</label><br>
-
-              <input type="radio" id="partTime" name="employment_status" readonly value="partTime" {{ ($employee['employment_stataus']=="partTime")? "checked" : "" }}>
+              
+              <input type="radio" id="partTime" name="employment_status" value="partTime" {{ ($employee['employment_status']=="partTime")? "checked" : "" }}
+              >
               <label for="partTime">Part Time</label><br>
-
-              <input type="radio" id="tempHelp" name="employment_status" readonly value="tempHelp" {{ ($employee['employment_stataus']=="tempHelp")? "checked" : "" }}>
+  
+              <input type="radio" id="tempHelp" name="employment_status" value="tempHelp" {{ ($employee['employment_status']=="tempHelp")? "checked" : "" }}>
               <label for="tempHelp">Temporary Help</label><br>
 
-            <button class= "m-2 rounded" type="submit">Submit</button>
+              <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                  <option value="">--Please Make a Selection--</option>
+                  <option value="male" {{ ($employee['gender']=="male")? "selected" : "" }}>Male</option>
+                  <option value="female" {{ ($employee['gender']=="female")? "selected" : "" }}>Female</option>
+                  <option value="other" {{ ($employee['gender']=="other")? "selected" : "" }}>Other</option>
+                </select>
+              </div>
+            <button class= "m-2 rounded"><a class="nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Return to Employee Index </a></button>
     </form>
   </div>   
 </div>

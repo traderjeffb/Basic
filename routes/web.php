@@ -38,6 +38,8 @@ Route::get('customer.create', [CustomerController::class, 'create'])->name('cust
 Route::post('customer.store', [CustomerController::class, 'store'])->name('customer.store');
 Route::get('customer.destroy/{id}',[CustomerController::class, 'destroy'])->name('customer.destroy');
 
-//Route::get('test',[employeeController::class, 'test'])->name('test');
 //Product
-Route::get('index',[ProductController::class, 'index'])->name('product.index');
+Route::get('product.indexInternal',[ProductController::class, 'indexInternal'])->name('product.indexInternal');
+Route::post('product.storeInternal', [ProductController::class, 'storeInternal'])->name('product.storeInternal');
+Route::get('product.createInternal', [ProductController::class, 'createInternal'])->name('product.createInternal');
+

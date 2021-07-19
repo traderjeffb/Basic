@@ -4,9 +4,9 @@
 
 
 <div class="d-flex">
-  <h3 class="mx-auto mt-4">Index of All Employee Infomation</h3>
+  <h3 class="mx-auto mt-4">Index of All Sales Infomation</h3>
 </div>
-<div class="d-flex justify-content-center">  <a  href= {{ route('employee.create') }}><h5>Add a New Employee</h5></a></div>
+<div class="d-flex justify-content-center">  <a  href= {{ route('sale.create') }}><h5>Create a New Sales Slip</h5></a></div>
 <div>
   @if(Session::has('success'))
   <div class="alert alert-success text-center">

@@ -22,6 +22,7 @@ class Employee extends Migration
             $table->integer('zipcode');
             $table->string('employment_status');
             $table->string('gender');
+            $table->string('department');
             $table->timestamps();
             //$table->unsignedBigInteger('user_id');
             //$table->foreign('user_id')->references('user_id')->on('users');            

@@ -45,7 +45,7 @@
       <a class="nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Employees <span class="sr-only">(current)</span></a>
       {{--  <a class="nav-item nav-link" href= {{ route('create') }}>Add Employee</a>  --}}
       <a class="nav-item nav-link active font-weight-bold" href= {{ route('customer.index') }}>Customers <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link active font-weight-bold" href= {{ route('product.index') }}>Products <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active font-weight-bold" href= {{ route('product.indexInternal') }}>Products <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active font-weight-bold" href= "#">Sales<span class="sr-only">(current)</span></a>
     </div>
   </div>

@@ -7,7 +7,7 @@
     <h3 class="mx-auto mt-4">New Employee Infomation</h3>
   </div>
   <div class="form d-flex ms-2">
-    <form class="form-group form-control-md col-md-4 border p-1  mx-auto  bg-light font-weight-bold "  action="{{ url('store') }}" method="post" id="add-employee-form">
+    <form class="form-group form-control-md col-md-4 border p-1  mx-auto  bg-light font-weight-bold "  action="{{ url('employee.store') }}" method="post" id="add-employee-form">
       @csrf
             <label for="name" class="ml-md-2" >Name</label>
             <input class="input-group" name="name" required><br>
@@ -36,8 +36,16 @@
                 <option value="other">Prefer not to say</option>
               </select>
             </div>
-
-            <button class= "m-2 rounded" type="submit">Submit</button>
+            <label for="department">Department:</label>
+            <select id="department" name="department">
+              <option value="">--Please Make a Selection--</option>
+              <option value="machines">Machines</option>
+              <option value="supplies">Suppies</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="support">Customer Support</option>
+            </select>
+          
+            <button class= "m-2 rounded float-right" type="submit">Submit</button>
     </form>
   </div>   
 </div>
