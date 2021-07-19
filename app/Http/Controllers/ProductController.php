@@ -17,8 +17,18 @@ class ProductController extends Controller
         return Product::all();
         
     }
+    public function indexInternal()
+    {
+        $products = Product::all();
+        return view('product.indexInternal', compact ('products'));
+        
+    }
 
-    /**
+    public function createInternal()
+    {
+        return view('product.createInternal');
+    }
+        /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -27,12 +37,39 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'slug'=>'required',
+            'product_name'=>'required',
+            'product_number'=>'required',
+            'product_department'=>'required',
             'price'=>'required'
         ]);
 
         return Product::create($request->all());
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeInternal(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'product_name'=>'required',
+            'product_number'=>'required',
+            'product_department'=>'required',
+            'price'=>'required'
+        ]);
+        // dd('past validate');
+        $product = new product();
+        $product->product_name = $request->get('product_name');
+        $product->product_number = $request->get('product_number');
+        $product->product_department = $request->get('product_department');
+        $product->description = $request->get('description');
+        $product->price = $request->get('price');
+
+        $product->save();
+        return redirect('product.indexInternal')->with('success', 'Successfully Created');
     }
 
     /**
