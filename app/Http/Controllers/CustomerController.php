@@ -41,7 +41,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.create');
     }
 
     /**
@@ -53,7 +53,6 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-            dd($request);
             $request->validate([
                 'firstName'=>'required ',
                 'lastName'=>'required ',
@@ -64,9 +63,9 @@ class CustomerController extends Controller
                 'email' => 'required',
                 'customerRating' => 'required',
             ]);
-    
+            
             $customer= new customer();
-            $customer->firtName = ucfirst($request->get('firstName'));
+            $customer->firstName = ucfirst($request->get('firstName'));
             $customer->lastName = ucfirst($request->get('lastName'));
             $customer->address = $request->get('address');
             $customer->city = $request->get('city');
@@ -74,9 +73,9 @@ class CustomerController extends Controller
             $customer->zipcode = $request->get('zipcode');
             $customer->email = $request->get('email');
             $customer->customerRating = $request->get('customerRating');
-    
             $customer->save();
-            return('Successfully Created');
+            return redirect('customer.index')->with('success', 'Successfully Created');
+
     }
 
     /**
