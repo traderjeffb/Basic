@@ -67,11 +67,15 @@ class ProductController extends Controller
         $product->product_department = $request->get('product_department');
         $product->description = $request->get('description');
         $product->price = $request->get('price');
-
         $product->save();
         return redirect('product.indexInternal')->with('success', 'Successfully Created');
     }
 
+    public function cart(Request $request)
+    {
+        dd($request->all());
+        return "0";
+    }
     /**
      * Display the specified resource.
      *
