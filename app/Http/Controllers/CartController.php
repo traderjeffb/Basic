@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -11,10 +12,30 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function cart()
     {
-        //
+        return view('cart.cart');
     }
+
+    public function addToCart($id)
+    {
+        $product = Product::find($id);
+
+        $cart = session()->get('cart');
+
+        $cart[$id]=[
+
+            "product_name" => $product->product_name,
+            "product_number"=>$product->product_number,
+            "product_department"=>$product->product_department,
+            "description"=>$product->description,
+            "price"=>$product->price,
+        ];
+        session()->put('cart', $cart);
+        // dd($cart);
+        return redirect()->back()->with('success','Item successfully added to cart');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,21 +57,21 @@ class CartController extends Controller
     {
 
             //  dd($request);
-            $request->validate([
-                'product_name'=>'required',
-                'product_number'=>'required',
-                'product_department'=>'required',
-                'price'=>'required'
-            ]);
-            // dd('past validate');
-            $product = new cart;
-            $product->product_name = $request->get('product_name');
-            $product->product_number = $request->get('product_number');
-            $product->product_department = $request->get('product_department');
-            $product->description = $request->get('description');
-            $product->price = $request->get('price');
-            $product->save();
-            return redirect('cart index')->with('success', 'Successfully Created');
+            // $request->validate([
+            //     'product_name'=>'required',
+            //     'product_number'=>'required',
+            //     'product_department'=>'required',
+            //     'price'=>'required'
+            // ]);
+            // // dd('past validate');
+            // $product = new cart;
+            // $product->product_name = $request->get('product_name');
+            // $product->product_number = $request->get('product_number');
+            // $product->product_department = $request->get('product_department');
+            // $product->description = $request->get('description');
+            // $product->price = $request->get('price');
+            // $product->save();
+            // return redirect('cart index')->with('success', 'Successfully Created');
         
     }
 
