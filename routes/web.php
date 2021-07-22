@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+
 
 
 /*
@@ -42,4 +44,12 @@ Route::get('customer.destroy/{id}',[CustomerController::class, 'destroy'])->name
 Route::get('product.indexInternal',[ProductController::class, 'indexInternal'])->name('product.indexInternal');
 Route::post('product.storeInternal', [ProductController::class, 'storeInternal'])->name('product.storeInternal');
 Route::get('product.createInternal', [ProductController::class, 'createInternal'])->name('product.createInternal');
+
+
+//Customer Sales
+// Route::get('sale.create', [CustomerController::class, 'create'])->name('sale.create');
+// Route::get('sale.store', [CustomerController::class, 'store'])->name('sale.sale');
+
+//Cart 
+Route::post('cart.store', [CartController::class, 'store'])->name('cart.store');
 
