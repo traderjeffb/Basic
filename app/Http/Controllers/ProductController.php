@@ -34,6 +34,29 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // public function addToCart($id)
+    // {
+    //     dd("hello world");
+    //     $product = Product::find($id);
+
+    //     $cart = session()->get('cart');
+
+    //     $cart[$id]=[
+
+    //         "quanity" => 1 ,
+    //         "product_name" => $product->product_name,
+    //         "product_number"=>$product->product_number,
+    //         "product_department"=>$product->product_department,
+    //         "description"=>$product->description,
+    //         "price"=>$product->price,
+    //     ];
+    //     session()->put('cart', $cart);
+    //     dd('session');
+    //     return redirect()->back()->with('success','Item successfully added to cart');
+    // }
+
+
     public function store(Request $request)
     {
         $request->validate([
