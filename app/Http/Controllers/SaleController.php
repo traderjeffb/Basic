@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\sale;
+
 
 class SaleController extends Controller
 {
@@ -80,5 +82,27 @@ class SaleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sale(Request $request)
+    {
+        // $request->validate([
+        //     'product_name'=>'required',
+        //     'product_number'=>'required',
+        //     'product_department'=>'required',
+        //     'price'=>'required'
+        // ]);
+        // dd('in sale.sale');
+
+        $sale = new sale();
+        $sale->product_name = $request->get('product_name');
+        $sale->product_number = $request->get('product_number');
+        $sale->product_department = $request->get('product_department');
+        $sale->description = $request->get('description');
+        $sale->price = $request->get('price');
+        $sale->save();
+        //session()->pull('cart', $cart);
+        //session()->destroy;  //???????????????
+        return redirect('product.indexInternal')->with('success', 'Successfully Created');
     }
 }
