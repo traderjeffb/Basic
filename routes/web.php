@@ -5,6 +5,7 @@ use App\Http\Controllers\employeeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SaleController;
 
 
 
@@ -44,12 +45,15 @@ Route::get('customer.destroy/{id}',[CustomerController::class, 'destroy'])->name
 Route::get('product.indexInternal',[ProductController::class, 'indexInternal'])->name('product.indexInternal');
 Route::post('product.storeInternal', [ProductController::class, 'storeInternal'])->name('product.storeInternal');
 Route::get('product.createInternal', [ProductController::class, 'createInternal'])->name('product.createInternal');
+Route::get('product.addToCart/{id}', [ProductController::class, 'addToCart'])->name('product.addToCart');
 
 
 //Customer Sales
-// Route::get('sale.create', [CustomerController::class, 'create'])->name('sale.create');
-// Route::get('sale.store', [CustomerController::class, 'store'])->name('sale.sale');
+Route::get('sale.sale', [SaleController::class, 'sale'])->name('sale.sale');
 
 //Cart 
 Route::post('cart.store', [CartController::class, 'store'])->name('cart.store');
+Route::get('cart.cart', [CartController::class, 'cart'])->name('cart.cart');
+Route::get('cart.addToCart/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
+
 
