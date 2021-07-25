@@ -8,7 +8,6 @@
   <title>Document</title>
 
   {{--  <link rel="stylesheet" href="public.styles.css">  --}}
-  <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -31,18 +30,18 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand font-weight-bolder"  href="#">Yorktown Tools</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fs-3">
+  <a class="navbar-brand font-weight-bolder"  href="#">Yorktown Machinery & Supplies</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="p-2 nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Employees <span class="sr-only">(current)</span></a>
+      <a class="p-2 nav-item nav-link active mx-2 " href= {{ route('employee.index') }}>Employees <span class="sr-only">(current)</span></a>
       {{--  <a class="nav-item nav-link" href= {{ route('create') }}>Add Employee</a>  --}}
-      <a class="p-2 nav-item nav-link active font-weight-bold" href= {{ route('customer.index') }}>Customers <span class="sr-only">(current)</span></a>
-      <a class="p-2 nav-item nav-link active font-weight-bold" href= {{ route('product.indexInternal') }}>Products <span class="sr-only">(current)</span></a>
-      <a class="p-2 nav-item nav-link active font-weight-bold" href= "#">Customer Sales<span class="sr-only">(current)</span></a>
+      <a class="p-2 nav-item nav-link active mx-2" href= {{ route('customer.index') }}>Customers <span class="sr-only">(current)</span></a>
+      <a class="p-2 nav-item nav-link active mx-2" href= {{ route('product.indexInternal') }}>Order Form <span class="sr-only">(current)</span></a>
+      <a class="p-2 nav-item nav-link active mx-2" href= "#">Management Statistics<span class="sr-only">(current)</span></a>
     </div>
   </div>
 </nav>
