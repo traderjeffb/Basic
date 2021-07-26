@@ -32,7 +32,7 @@ class CartController extends Controller
             "price"=>$product->price,
         ];
         session()->put('cart', $cart);
-        // dd($cart);
+         dd($cart);
         return redirect()->back()->with('success','Item successfully added to cart');
     }
 
