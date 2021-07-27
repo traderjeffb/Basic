@@ -84,7 +84,7 @@ class SaleController extends Controller
         //
     }
 
-    public function sale(Request $request)
+    public function sale()
     {
         // $request->validate([
         //     'product_name'=>'required',
@@ -92,17 +92,22 @@ class SaleController extends Controller
         //     'product_department'=>'required',
         //     'price'=>'required'
         // ]);
-        // dd('in sale.sale');
+        // dd($request->all());
+        $cart = session()->get('cart');
+dd($cart);
+
 
         $sale = new sale();
         $sale->product_name = $request->get('product_name');
         $sale->product_number = $request->get('product_number');
         $sale->product_department = $request->get('product_department');
-        $sale->description = $request->get('description');
+        $sale->product_description = $request->get('description');
         $sale->price = $request->get('price');
         $sale->save();
+        Session::forget('cart');
+
         //session()->pull('cart', $cart);
-        //session()->destroy;  //???????????????
+        // session()->destroy;  //???????????????
         return redirect('product.indexInternal')->with('success', 'Successfully Created');
     }
 }
