@@ -39,10 +39,6 @@
         <td class="text-center" >{{ $product['description'] }}</td>
         <td class="text-center" >{{ $product['price'] }}</td>
         <td class="text-center" >
-          {{--  <a class="" href= "{{ route('product.detailsInternal', ['id'=>$employee['id']]) }}"> Details</a>
-          <a class="" href= "{{ route('product.editInternal', ['id'=>$employee['id']]) }}"> Edit</a>
-          <a class="" id="deleteBtn" href= "{{ route('product.destroyInteranl', ['id'=>$employee['id']]) }}" onclick="return confirm('Are you sure you want to delete this item?');"
-            > Delete</a>  --}}
         </td>
       </tr>
       @endforeach

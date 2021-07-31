@@ -86,28 +86,19 @@ class SaleController extends Controller
 
     public function sale()
     {
-        // $request->validate([
-        //     'product_name'=>'required',
-        //     'product_number'=>'required',
-        //     'product_department'=>'required',
-        //     'price'=>'required'
-        // ]);
-        // dd($request->all());
         $cart = session()->get('cart');
-dd($cart);
 
-
-        $sale = new sale();
-        $sale->product_name = $request->get('product_name');
-        $sale->product_number = $request->get('product_number');
-        $sale->product_department = $request->get('product_department');
-        $sale->product_description = $request->get('description');
-        $sale->price = $request->get('price');
-        $sale->save();
-        Session::forget('cart');
-
-        //session()->pull('cart', $cart);
-        // session()->destroy;  //???????????????
+        foreach ($cart as $item){
+            $sale = new sale();
+            $sale->product_name =   $item['product_name'];
+            $sale->product_number = $item['product_number'];
+            $sale->product_department = $item['product_department'];
+            $sale->product_description = $item['description'];
+            $sale->price = $item['price'];
+            $sale->save();
+        }
+        // $cart = '';
+        // session = array();
         return redirect('product.indexInternal')->with('success', 'Successfully Created');
     }
 }

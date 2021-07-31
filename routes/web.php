@@ -21,8 +21,11 @@ use App\Http\Controllers\SaleController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
+
+
+//employee
 Route::get('employee.index', [employeeController::class, 'index'])->name('employee.index');
 Route::get('employee.create',[employeeController::class, 'create'])->name('employee.create');
 Route::get('employee.details/{id}',[employeeController::class, 'details'])->name('employee.details');
@@ -57,3 +60,7 @@ Route::get('cart.cart', [CartController::class, 'cart'])->name('cart.cart');
 Route::get('cart.addToCart/{id}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

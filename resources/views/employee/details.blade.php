@@ -40,7 +40,7 @@
                   <option value="other" {{ ($employee['gender']=="other")? "selected" : "" }}>Other</option>
                 </select>
               </div>
-            <button class= "m-2 rounded"><a class="nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Return to Employee Index </a></button>
+            <button class= "m-2 rounded"><a class="nav-item nav-link active font-weight-bold" href= {{ route('employee.index') }}>Back</a></button>
     </form>
   </div>   
 </div>
